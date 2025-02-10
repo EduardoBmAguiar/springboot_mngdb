@@ -1,5 +1,6 @@
 package com.webedu.springmngdb.resources;
 
+import com.webedu.springmngdb.domain.Post;
 import com.webedu.springmngdb.domain.User;
 import com.webedu.springmngdb.dto.UserDTO;
 import com.webedu.springmngdb.services.UserService;
@@ -55,5 +56,11 @@ public class UserResource {
         user.setId(id);
         userService.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
