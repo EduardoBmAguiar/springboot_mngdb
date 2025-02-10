@@ -1,12 +1,14 @@
 package com.webedu.springmngdb.domain;
 
 import com.webedu.springmngdb.dto.AuthorDTO;
+import com.webedu.springmngdb.dto.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document
@@ -21,6 +23,8 @@ public class Post implements Serializable {
     private String body;
 
     private AuthorDTO author;
+
+    private List<CommentDTO> commments = new ArrayList<>();
 
     public Post() {}
 
@@ -70,6 +74,14 @@ public class Post implements Serializable {
 
     public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getCommments() {
+        return commments;
+    }
+
+    public void setCommments(List<CommentDTO> commments) {
+        this.commments = commments;
     }
 
     @Override
