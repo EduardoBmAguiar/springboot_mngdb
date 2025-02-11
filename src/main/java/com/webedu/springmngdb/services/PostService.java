@@ -6,6 +6,7 @@ import com.webedu.springmngdb.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +23,9 @@ public class PostService {
 
     public List<Post> findByTitle(String text) {
         return postRepository.findByTitle(text);
+    }
+
+    public List<Post> fullSearch(String text, LocalDate minDate, LocalDate maxDate) {
+        return postRepository.fullSearch(text, minDate, maxDate);
     }
 }
